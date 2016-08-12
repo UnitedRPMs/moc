@@ -6,7 +6,7 @@
 Name:    moc
 Summary: Music on Console - Console audio player for Linux/UNIX
 Version: 2.6
-Release: 0.12.alpha2%{?dist}
+Release: 0.13.alpha2%{?dist}
 License: GPLv2+ and GPLv3+
 URL:     http://moc.daper.net
 
@@ -14,8 +14,8 @@ URL:     http://moc.daper.net
 ## svn co svn://svn.daper.net/moc/trunk
 ## rm -rf trunk/.svn
 ## tar -cvzf moc-git%%{checkout}.tar.gz trunk
-Source0: moc-git%{checkout}.tar.gz
-#Source0: http://ftp.daper.net/pub/soft/moc/unstable/moc-#%{version}-alpha2.tar.xz
+#Source0: moc-git%{checkout}.tar.gz
+Source0: http://ftp.daper.net/pub/soft/moc/unstable/moc-%{version}-alpha2.tar.xz
 
 BuildRequires: pkgconfig(ncurses)
 BuildRequires: pkgconfig(alsa) 
@@ -53,7 +53,7 @@ using the menu similar to Midnight Commander, and MOC will start playing all
 files in this directory beginning from the chosen file.
 
 %prep
-%setup -q -n trunk
+%setup -n moc-%{version}-alpha2
 
 %build
 autoreconf -ivf
@@ -82,6 +82,10 @@ rm -f $RPM_BUILD_ROOT%_libdir/moc/decoder_plugins/*.la
 %{_libdir}/%{name}/
 
 %changelog
+
+* Thu Aug 11 2016 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6-0.13.alpha2
+- Upstream
+
 * Sat Jul 30 2016 Julian Sikorski <belegdol@fedoraproject.org> - 2.6-0.12.alpha2
 - Rebuilt for ffmpeg-3.1.1
 

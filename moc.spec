@@ -6,7 +6,7 @@
 Name:    moc
 Summary: Music on Console - Console audio player for Linux/UNIX
 Version: 2.6
-Release: 0.16%{?dist}
+Release: 0.17%{?dist}
 License: GPLv2+ and GPLv3+
 URL:     http://moc.daper.net
 
@@ -82,6 +82,9 @@ rm -f $RPM_BUILD_ROOT%_libdir/moc/decoder_plugins/*.la
 %{_libdir}/%{name}/
 
 %changelog
+
+* Wed May 31 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.6-0.17  
+- Automatic Mass Rebuild
 
 * Sat Mar 18 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6-0.16
 - Rebuilt for libbluray

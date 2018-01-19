@@ -3,5 +3,5 @@ BUILDROOT/*
 RPMS/*
 SPECS/*
 SRPMS/*
-moc-*.tar.xz
+moc-*.tar.gz
 /moc-git*.tar.gz

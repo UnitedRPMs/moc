@@ -1,4 +1,6 @@
-%global checkout 2880
+%global commit0 dceb31bf4db236899ef53827baaf3a0797d3a0cf
+%global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
+%global gver .git%{shortcommit0}
 
 # Set up a new macro to define MOC's 'mocp' executable
 %global   exec   mocp
@@ -6,16 +8,11 @@
 Name:    moc
 Summary: Music on Console - Console audio player for Linux/UNIX
 Version: 2.6
-Release: 	0.18%{?dist}
+Release: 1%{?gver}%{?dist}
 License: GPLv2+ and GPLv3+
 URL:     http://moc.daper.net
 
-## Source archive made by using following commands
-## svn co svn://svn.daper.net/moc/trunk
-## rm -rf trunk/.svn
-## tar -cvzf moc-git%%{checkout}.tar.gz trunk
-#Source0: moc-git%{checkout}.tar.gz
-Source0: http://ftp.daper.net/pub/soft/moc/unstable/moc-%{version}-alpha3.tar.xz
+Source0: https://github.com/jonsafari/mocp/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 
 BuildRequires: pkgconfig(ncurses)
 BuildRequires: pkgconfig(alsa) 
@@ -53,7 +50,7 @@ using the menu similar to Midnight Commander, and MOC will start playing all
 files in this directory beginning from the chosen file.
 
 %prep
-%setup -n moc-%{version}-alpha3
+%autosetup -n %{exec}-%{commit0}
 
 %build
 autoreconf -ivf
@@ -82,6 +79,9 @@ rm -f $RPM_BUILD_ROOT%_libdir/moc/decoder_plugins/*.la
 %{_libdir}/%{name}/
 
 %changelog
+
+* Tue Jan 16 2018 David Vásquez <davidva AT tutanota DOT com> - 2.6-1.gitdceb31b
+- Updated to 2.6-1.gitdceb31b
 
 * Wed Oct 18 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.6-0.18  
 - Automatic Mass Rebuild

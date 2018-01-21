@@ -53,7 +53,7 @@ using the menu similar to Midnight Commander, and MOC will start playing all
 files in this directory beginning from the chosen file.
 
 %prep
-%autosetup -n %{exec}-%{commit0}
+%autosetup -n %{exec}-%{svn_rev}
 
 %build
 autoreconf -ivf

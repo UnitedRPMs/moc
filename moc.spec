@@ -1,18 +1,21 @@
-%global commit0 dceb31bf4db236899ef53827baaf3a0797d3a0cf
-%global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global gver .git%{shortcommit0}
-
 # Set up a new macro to define MOC's 'mocp' executable
 %global   exec   mocp
+
+# Globals for svn 
+# Get current revision:
+# svn info svn://svn.daper.net/moc/trunk 
+%global svn_rev 2961
+%global svn_url svn://svn.daper.net/moc/trunk
+%global svn_ver .svn%{svn_rev}
 
 Name:    moc
 Summary: Music on Console - Console audio player for Linux/UNIX
 Version: 2.6
-Release: 1%{?gver}%{?dist}
+Release: 1.1%{?svn_ver}%{?dist}
 License: GPLv2+ and GPLv3+
 URL:     http://moc.daper.net
 
-Source0: https://github.com/jonsafari/mocp/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Source0: %{name}-%{svn_rev}.tar.gz
 
 BuildRequires: pkgconfig(ncurses)
 BuildRequires: pkgconfig(alsa) 
@@ -79,6 +82,9 @@ rm -f $RPM_BUILD_ROOT%_libdir/moc/decoder_plugins/*.la
 %{_libdir}/%{name}/
 
 %changelog
+
+* Sat Jan 20 2018 David Vásquez <davidva AT tutanota DOT com> - 2.6-1.1.svn2961
+- Changed to svn sources
 
 * Tue Jan 16 2018 David Vásquez <davidva AT tutanota DOT com> - 2.6-1.gitdceb31b
 - Updated to 2.6-1.gitdceb31b

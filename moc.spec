@@ -62,13 +62,15 @@ autoreconf -ivf
  --with-oss --with-alsa --with-jack --with-aac --with-mp3 \
  --with-musepack --with-vorbis --with-flac --with-wavpack \
  --with-sndfile --with-modplug --with-ffmpeg --with-speex \
- --with-samplerate --with-curl --disable-debug --without-magic \
+ --with-samplerate --with-curl --disable-cache --disable-debug --without-magic \
  CPPFLAGS="-I%{_includedir}/libdb -fPIC"
  
 %make_build
 
 %install
 %make_install
+echo 'default /tmp/timidity.tmp' > %{buildroot}/%{_sysconfdir}/timidity.cfg
+
 rm -rf $RPM_BUILD_ROOT%{_datadir}/doc
 rm -f $RPM_BUILD_ROOT%_libdir/*.la
 rm -f $RPM_BUILD_ROOT%_libdir/moc/decoder_plugins/*.la
@@ -80,6 +82,7 @@ rm -f $RPM_BUILD_ROOT%_libdir/moc/decoder_plugins/*.la
 %{_datadir}/%{name}/
 %{_mandir}/man1/%{exec}.*
 %{_libdir}/%{name}/
+%config(noreplace) %{_sysconfdir}/timidity.cfg
 
 %changelog
 

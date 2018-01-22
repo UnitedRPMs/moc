@@ -52,8 +52,13 @@ powerful and easy to use. You just need to select a file from some directory
 using the menu similar to Midnight Commander, and MOC will start playing all
 files in this directory beginning from the chosen file.
 
+Configuration
+Sample configuration file can be found in /usr/share/doc/moc/config.example. On mocp first run the local ~/.moc/ directory is created. To configure, copy the examples to it and edit accordingly.
+cp -f /usr/share/doc/moc/config.example ~/.moc/config
+
 %prep
 %autosetup -n %{name}-%{svn_rev}
+sed -i 's|#TiMidity_Config =|TiMidity_Config = %{_sysconfdir}/mocp/timidity.cfg|g' config.example
 
 %build
 autoreconf -ivf
@@ -69,7 +74,7 @@ autoreconf -ivf
 
 %install
 %make_install
-echo 'default /tmp/timidity.tmp' > %{buildroot}/%{_sysconfdir}/timidity.cfg
+echo 'default /tmp/timidity.tmp' >> %{buildroot}/%{_sysconfdir}/mocp/timidity.cfg
 
 rm -rf $RPM_BUILD_ROOT%{_datadir}/doc
 rm -f $RPM_BUILD_ROOT%_libdir/*.la
@@ -82,7 +87,7 @@ rm -f $RPM_BUILD_ROOT%_libdir/moc/decoder_plugins/*.la
 %{_datadir}/%{name}/
 %{_mandir}/man1/%{exec}.*
 %{_libdir}/%{name}/
-%config(noreplace) %{_sysconfdir}/timidity.cfg
+%{_sysconfdir}/mocp/timidity.cfg
 
 %changelog
 

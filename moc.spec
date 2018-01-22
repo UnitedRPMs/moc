@@ -74,6 +74,7 @@ autoreconf -ivf
 
 %install
 %make_install
+install -dm 755 %{buildroot}/%{_sysconfdir}/mocp
 echo 'default /tmp/timidity.tmp' >> %{buildroot}/%{_sysconfdir}/mocp/timidity.cfg
 
 rm -rf $RPM_BUILD_ROOT%{_datadir}/doc

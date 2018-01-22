@@ -16,6 +16,7 @@ License: GPLv2+ and GPLv3+
 URL:     http://moc.daper.net
 
 Source0: %{name}-%{svn_rev}.tar.gz
+Patch:   TiMidity_Config.patch
 
 BuildRequires: pkgconfig(ncurses)
 BuildRequires: pkgconfig(alsa) 
@@ -57,8 +58,7 @@ Sample configuration file can be found in /usr/share/doc/moc/config.example. On 
 cp -f /usr/share/doc/moc/config.example ~/.moc/config
 
 %prep
-%autosetup -n %{name}-%{svn_rev}
-sed -i 's|#TiMidity_Config =|TiMidity_Config = %{_sysconfdir}/mocp/timidity.cfg|g' config.example.in
+%autosetup -n %{name}-%{svn_rev} -p1
 
 %build
 autoreconf -ivf

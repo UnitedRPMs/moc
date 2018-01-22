@@ -1,0 +1,11 @@
+--- a/config.example.in	2018-01-21 00:10:55.000000000 -0600
++++ b/config.example-1.in	2018-01-21 22:27:40.832983673 -0600
+@@ -638,7 +638,7 @@
+ # Setting it to 'yes' also uses the library defaults.
+ # Set it to 'no' if you don't have any configuration file.
+ # Otherwise set it to the name of a specific file.
+-#TiMidity_Config =
++TiMidity_Config = /etc/mocp/timidity.cfg
+ 
+ # Self-describing SidPlay2 audio characteristic options.
+ #SidPlay2_DefaultSongLength = 180   # If not in database (in seconds)

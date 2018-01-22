@@ -58,7 +58,7 @@ cp -f /usr/share/doc/moc/config.example ~/.moc/config
 
 %prep
 %autosetup -n %{name}-%{svn_rev}
-sed -i 's|#TiMidity_Config =|TiMidity_Config = %{_sysconfdir}/mocp/timidity.cfg|g' config.example
+sed -i 's|#TiMidity_Config =|TiMidity_Config = %{_sysconfdir}/mocp/timidity.cfg|g' config.example.in
 
 %build
 autoreconf -ivf

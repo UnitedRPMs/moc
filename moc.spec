@@ -4,19 +4,20 @@
 # Globals for svn 
 # Get current revision:
 # svn info svn://svn.daper.net/moc/trunk 
-%global svn_rev 2961
+%global svn_rev 2963
 %global svn_url svn://svn.daper.net/moc/trunk
 %global svn_ver .svn%{svn_rev}
 
 Name:    moc
 Summary: Music on Console - Console audio player for Linux/UNIX
 Version: 2.6
-Release: 1.1%{?svn_ver}%{?dist}
+Release: 1.2%{?svn_ver}%{?dist}
 License: GPLv2+ and GPLv3+
 URL:     http://moc.daper.net
 
 Source0: %{name}-%{svn_rev}.tar.gz
 Patch:   TiMidity_Config.patch
+Patch1:  ffmpeg4_fix.patch
 
 BuildRequires: pkgconfig(ncurses)
 BuildRequires: pkgconfig(alsa) 
@@ -45,7 +46,6 @@ BuildRequires: libmad-devel
 BuildRequires: faad2-devel
 
 BuildRequires: autoconf, automake
-Requires: ffmpeg
 
 %description
 MOC (music on console) is a console audio player for LINUX/UNIX designed to be
@@ -68,7 +68,7 @@ autoreconf -ivf
  --with-musepack --with-vorbis --with-flac --with-wavpack \
  --with-sndfile --with-modplug --with-ffmpeg --with-speex \
  --with-samplerate --with-curl --disable-cache --disable-debug --without-magic \
- CPPFLAGS="-I%{_includedir}/libdb -fPIC"
+ CPPFLAGS="-I%{_includedir}/libdb -fPIC" 
  
 %make_build
 
@@ -91,6 +91,9 @@ rm -f $RPM_BUILD_ROOT%_libdir/moc/decoder_plugins/*.la
 %{_sysconfdir}/mocp/timidity.cfg
 
 %changelog
+
+* Sat Apr 21 2018 David Vásquez <davidva AT tutanota DOT com> - 2.6-1.2.svn2963
+- Updated to 2.6-1.2.svn2963
 
 * Sat Jan 20 2018 David Vásquez <davidva AT tutanota DOT com> - 2.6-1.1.svn2961
 - Changed to svn sources

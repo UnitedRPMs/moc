@@ -5,3 +5,4 @@ SPECS/*
 SRPMS/*
 moc-*.tar.gz
 /moc-git*.tar.gz
+.directory

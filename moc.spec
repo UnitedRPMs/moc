@@ -17,7 +17,6 @@ URL:     http://moc.daper.net
 
 Source0: %{name}-%{svn_rev}.tar.gz
 Patch:   TiMidity_Config.patch
-Patch1:  ffmpeg4_fix.patch
 
 BuildRequires: pkgconfig(ncurses)
 BuildRequires: pkgconfig(alsa) 

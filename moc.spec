@@ -4,14 +4,14 @@
 # Globals for svn 
 # Get current revision:
 # svn info svn://svn.daper.net/moc/trunk 
-%global svn_rev 2992
+%global svn_rev 3005
 %global svn_url svn://svn.daper.net/moc/trunk
 %global svn_ver .svn%{svn_rev}
 
 Name:    moc
 Summary: Music on Console - Console audio player for Linux/UNIX
 Version: 2.6
-Release: 1.22%{?svn_ver}%{?dist}
+Release: 2%{?dist}
 License: GPLv2+ and GPLv3+
 URL:     http://moc.daper.net
 
@@ -42,7 +42,7 @@ BuildRequires: librcc-devel
 BuildRequires: popt-devel
 BuildRequires: ffmpeg-devel >= 4.1
 BuildRequires: libmad-devel
-BuildRequires: faad2-devel
+BuildRequires: faad2-devel >= 2.9.1
 
 BuildRequires: autoconf, automake
 
@@ -90,6 +90,10 @@ rm -f $RPM_BUILD_ROOT%_libdir/moc/decoder_plugins/*.la
 %{_sysconfdir}/mocp/timidity.cfg
 
 %changelog
+
+* Sun Nov 10 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.6-2
+- Updated to current revision
+- Rebuilt for faad2
 
 * Thu Dec 06 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.6-1.22.svn2992  
 - Updated to current revision

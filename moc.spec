@@ -11,7 +11,7 @@
 Name:    moc
 Summary: Music on Console - Console audio player for Linux/UNIX
 Version: 2.6
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPLv2+ and GPLv3+
 URL:     http://moc.daper.net
 
@@ -40,7 +40,7 @@ BuildRequires: pkgconfig(opus)
 BuildRequires: libtool
 BuildRequires: librcc-devel
 BuildRequires: popt-devel
-BuildRequires: ffmpeg-devel >= 4.1
+BuildRequires: ffmpeg-devel >= 4.3
 BuildRequires: libmad-devel
 BuildRequires: faad2-devel >= 2.9.1
 
@@ -90,6 +90,10 @@ rm -f $RPM_BUILD_ROOT%_libdir/moc/decoder_plugins/*.la
 %{_sysconfdir}/mocp/timidity.cfg
 
 %changelog
+
+* Tue Jun 23 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.6-3
+- Rebuilt for ffmpeg
+- Updated to current revision
 
 * Sun Nov 10 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.6-2
 - Updated to current revision
